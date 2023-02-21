@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Wait List";
+}
+
+@model List<ApplicationResponse>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Edited</td>
+            <td>Notes</td>
+            <td>Rating</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+            {
+        <tr>
+            @*<td>@x.ApplicationId</td>*@
+            <td>@x.Category.CategoryName</td>
+            <td>@x.Title</td>
+            <td>@x.Year</td>
+            <td>@x.Director</td>
+            <td>@x.Edited</td>
+            <td>@x.Notes</td>
+            <td>@x.Rating</td>
+
+
+
+            @*these refer to actions we create in the home controller that will tell these what to do!*@
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.ApplicationId">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.ApplicationId">Delete</a></td>
+        </tr>
+            }
+
+    </tbody>
+</table>

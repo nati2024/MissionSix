@@ -11,19 +11,25 @@ namespace MissionSix.Models
         [Key]
         [Required]
         public int ApplicationId { get; set; }
-        [Required]
-        public string Category { get; set; }
+        
         [Required]
         public string Title { get; set; }
         [Required]
         public int Year { get; set; }
         [Required]
         public string Director { get; set; }
-        [Range(0,25)]
+        [StringLength(25)]
         public string Notes { get; set; }
         public bool Edited { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Hey! Should I watch this or what?")]
         public string Rating { get; set; }
         public string Lent { get; set; }
+
+
+        //Build Foreign Key Relationship
+
+        [Required]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
